@@ -1,26 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-cursive: "Dancing Script", cursive;
+
+  --color-romantic-pink-light: #fef2f2;
+  --color-romantic-pink: #fbcfe8;
+  --color-romantic-rose: #f43f5e;
+  --color-romantic-purple-light: #f5f3ff;
+  --color-romantic-purple: #c084fc;
+  --color-romantic-purple-dark: #581c87;
+  --color-romantic-purple-deep: #2e1065;
+  --color-romantic-gold: #fbbf24;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+    --background: var(--color-romantic-cream);
+    --foreground: var(--color-romantic-purple-dark);
+    --card: #ffffff;
+    --card-foreground: var(--color-romantic-purple-dark);
+  }
+
+  .dark {
+    --background: var(--color-romantic-purple-deep);
+    --foreground: var(--color-romantic-lavender);
+    --card: #2d1b4e;
+    --card-foreground: var(--color-romantic-lavender);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl;
+  }
+  
+  .dark .glass-card {
+    @apply bg-black/20 backdrop-blur-md border-white/10 rounded-2xl;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(225, 29, 72, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(225, 29, 72, 0.4);
 }
