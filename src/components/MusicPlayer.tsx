@@ -72,13 +72,16 @@ export default function MusicPlayer() {
 
   return (
     <div className="flex flex-col gap-2">
-      <motion.div
+      <motion.button
+        onClick={togglePlay}
         className={cn(
           "p-3 rounded-full shadow-lg backdrop-blur-md border-2 bg-accent-rose text-white border-accent-rose"
         )}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
       >
-        <Music size={20} />
-      </motion.div>
+        {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+      </motion.button>
 
       <motion.button
         onClick={toggleMute}
@@ -92,6 +95,7 @@ export default function MusicPlayer() {
       <audio 
         ref={audioRef}
         src="/audio/tumHoTo.mp3"
+        autoPlay
         loop
         preload="auto"
         onError={(e) => console.log("Audio failed:", e)}

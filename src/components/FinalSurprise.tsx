@@ -122,7 +122,7 @@ export default function FinalSurprise() {
         )}
       </div>
       
-      <footer className="absolute bottom-10 text-[10px] text-white/30 font-bold tracking-[0.5em] uppercase">
+      <footer className="absolute bottom-10 text-xs text-white/70 font-bold tracking-[0.4em] uppercase drop-shadow-md">
         Together Since 2019
       </footer>
     </Section>
